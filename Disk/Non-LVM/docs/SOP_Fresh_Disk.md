@@ -11,7 +11,7 @@ Provision a new disk on a Linux system without using LVM, format it with XFS, mo
 ```bash
 lsblk #lists block storage devices and their partitions showing mount points  and sizes.
 
-[ec2-user@ip-172-31-78-43 ~]$ lsblk
+[ec2-user@ip-xxx-xx-xx-xxx ~]$ lsblk
 NAME          MAJ:MIN RM SIZE RO TYPE MOUNTPOINTS
 nvme0n1       259:0    0   8G  0 disk 
 ├─nvme0n1p1   259:1    0   8G  0 part /
@@ -19,7 +19,7 @@ nvme0n1       259:0    0   8G  0 disk
 └─nvme0n1p128 259:3    0  10M  0 part /boot/efi
 
 # Attach a new disk/volume using cloud provider
-[ec2-user@ip-172-31-78-43 ~]$ lsblk
+[ec2-user@ip-xxx-xx-xx-xxx ~]$ lsblk
 NAME          MAJ:MIN RM SIZE RO TYPE MOUNTPOINTS
 nvme0n1       259:0    0   8G  0 disk 
 ├─nvme0n1p1   259:1    0   8G  0 part /
@@ -47,7 +47,7 @@ accept default for last sector
 w to save
 
 lsblk to validate
-[ec2-user@ip-172-31-78-43 ~]$ lsblk
+[ec2-user@ip-xxx-xx-xx-xxx ~]$ lsblk
 NAME          MAJ:MIN RM SIZE RO TYPE MOUNTPOINTS
 nvme0n1       259:0    0   8G  0 disk 
 ├─nvme0n1p1   259:1    0   8G  0 part /
@@ -84,7 +84,7 @@ df -h /data
 Demo:
 
 ```bash
-[ec2-user@ip-172-31-78-43 ~]$ lsblk
+[ec2-user@ip-xxx-xx-xx-xxx ~]$ lsblk
 NAME          MAJ:MIN RM SIZE RO TYPE MOUNTPOINTS
 nvme0n1       259:0    0   8G  0 disk 
 ├─nvme0n1p1   259:1    0   8G  0 part /
@@ -92,7 +92,7 @@ nvme0n1       259:0    0   8G  0 disk
 └─nvme0n1p128 259:3    0  10M  0 part /boot/efi
 
 #Attach a new disk
-[ec2-user@ip-172-31-78-43 ~]$ lsblk
+[ec2-user@ip-xxx-xx-xx-xxx ~]$ lsblk
 NAME          MAJ:MIN RM SIZE RO TYPE MOUNTPOINTS
 nvme0n1       259:0    0   8G  0 disk 
 ├─nvme0n1p1   259:1    0   8G  0 part /
@@ -100,10 +100,10 @@ nvme0n1       259:0    0   8G  0 disk
 └─nvme0n1p128 259:3    0  10M  0 part /boot/efi
 nvme1n1       259:4    0  10G  0 disk
 
-[ec2-user@ip-172-31-78-43 ~]$ ls -l /dev/sdc
+[ec2-user@ip-xxx-xx-xx-xxx ~]$ ls -l /dev/sdc
 lrwxrwxrwx. 1 root root 7 Dec 30 17:41 /dev/sdc -> nvme1n1
 
-[ec2-user@ip-172-31-78-43 ~]$ sudo fdisk /dev/nvme1n1
+[ec2-user@ip-xxx-xx-xx-xxx ~]$ sudo fdisk /dev/nvme1n1
 
 Welcome to fdisk (util-linux 2.37.4).
 Changes will remain in memory only, until you decide to write them.
@@ -130,7 +130,7 @@ The partition table has been altered.
 Calling ioctl() to re-read partition table.
 Syncing disks.
 
-[ec2-user@ip-172-31-78-43 ~]$ lsblk
+[ec2-user@ip-xxx-xx-xx-xxx ~]$ lsblk
 NAME          MAJ:MIN RM SIZE RO TYPE MOUNTPOINTS
 nvme0n1       259:0    0   8G  0 disk 
 ├─nvme0n1p1   259:1    0   8G  0 part /
@@ -139,10 +139,10 @@ nvme0n1       259:0    0   8G  0 disk
 nvme1n1       259:4    0  10G  0 disk 
 └─nvme1n1p1   259:6    0  10G  0 part
 
-[ec2-user@ip-172-31-78-43 ~]$ sudo blkid /dev/sdc1
+[ec2-user@ip-xxx-xx-xx-xxx ~]$ sudo blkid /dev/sdc1
 /dev/sdc1: UUID="cb75231f-d15b-4f3b-a16f-520210edcf85" BLOCK_SIZE="4096" TYPE="xfs" PARTUUID="aa495c7c-01"
 
-[ec2-user@ip-172-31-78-43 ~]$ df -h
+[ec2-user@ip-xxx-xx-xx-xxx ~]$ df -h
 Filesystem        Size  Used Avail Use% Mounted on
 devtmpfs          4.0M     0  4.0M   0% /dev
 tmpfs             459M     0  459M   0% /dev/shm
@@ -152,12 +152,12 @@ tmpfs             459M     0  459M   0% /tmp
 /dev/nvme0n1p128   10M  1.3M  8.7M  13% /boot/efi
 tmpfs              92M     0   92M   0% /run/user/1000
 
-[ec2-user@ip-172-31-78-43 ~]$ sudo mkdir /data
-[ec2-user@ip-172-31-78-43 ~]$ sudo mount /dev/sdc1 /data
-[ec2-user@ip-172-31-78-43 ~]$ df -h /data
+[ec2-user@ip-xxx-xx-xx-xxx ~]$ sudo mkdir /data
+[ec2-user@ip-xxx-xx-xx-xxx ~]$ sudo mount /dev/sdc1 /data
+[ec2-user@ip-xxx-xx-xx-xxx ~]$ df -h /data
 Filesystem      Size  Used Avail Use% Mounted on
 /dev/nvme1n1p1   10G  105M  9.9G   2% /data
-[ec2-user@ip-172-31-78-43 ~]$ df -h
+[ec2-user@ip-xxx-xx-xx-xxx ~]$ df -h
 Filesystem        Size  Used Avail Use% Mounted on
 devtmpfs          4.0M     0  4.0M   0% /dev
 tmpfs             459M     0  459M   0% /dev/shm
@@ -168,7 +168,7 @@ tmpfs             459M     0  459M   0% /tmp
 tmpfs              92M     0   92M   0% /run/user/1000
 /dev/nvme1n1p1     10G  105M  9.9G   2% /data
 
-[ec2-user@ip-172-31-78-43 ~]$ cat /etc/fstab
+[ec2-user@ip-xxx-xx-xx-xxx ~]$ cat /etc/fstab
 #
 UUID=170fd7a4-f127-46eb-a3be-8b380dc8d94a     /           xfs    defaults,noatime  1   1
 UUID=7BBE-6739        /boot/efi       vfat    defaults,noatime,uid=0,gid=0,umask=0077,shortname=winnt,x-systemd.automount 0 2

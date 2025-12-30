@@ -22,7 +22,7 @@ Extend a disk using LVM.
 ```bash
 lsblk #lists block storage devices and their partitions showing mount points  and sizes.
 
-[ec2-user@ip-172-31-78-43 ~]$ lsblk
+[ec2-user@ip-xxx-xx-xx-xxx ~]$ lsblk
 NAME          MAJ:MIN RM SIZE RO TYPE MOUNTPOINTS
 nvme0n1       259:0    0   8G  0 disk 
 ├─nvme0n1p1   259:1    0   8G  0 part /
@@ -32,7 +32,7 @@ nvme1n1       259:4    0  10G  0 disk
 └─nvme1n1p1   259:6    0  10G  0 part /data
 
 # Extend a new disk/volume using cloud provider
-[ec2-user@ip-172-31-78-43 ~]$ lsblk
+[ec2-user@ip-xxx-xx-xx-xxx ~]$ lsblk
 NAME          MAJ:MIN RM SIZE RO TYPE MOUNTPOINTS
 nvme0n1       259:0    0   8G  0 disk 
 ├─nvme0n1p1   259:1    0   8G  0 part /
@@ -76,7 +76,7 @@ Demo:
 ```
 lsblk #lists block storage devices and their partitions showing mount points  and sizes.
 
-[ec2-user@ip-172-31-78-43 ~]$ lsblk
+[ec2-user@ip-xxx-xx-xx-xxx ~]$ lsblk
 NAME          MAJ:MIN RM SIZE RO TYPE MOUNTPOINTS
 nvme0n1       259:0    0   8G  0 disk 
 ├─nvme0n1p1   259:1    0   8G  0 part /
@@ -86,7 +86,7 @@ nvme1n1       259:4    0  10G  0 disk
 └─nvme1n1p1   259:6    0  10G  0 part /data
 
 # Extend a new disk/volume using cloud provider
-[ec2-user@ip-172-31-78-43 ~]$ lsblk
+[ec2-user@ip-xxx-xx-xx-xxx ~]$ lsblk
 NAME          MAJ:MIN RM SIZE RO TYPE MOUNTPOINTS
 nvme0n1       259:0    0   8G  0 disk 
 ├─nvme0n1p1   259:1    0   8G  0 part /
@@ -95,9 +95,9 @@ nvme0n1       259:0    0   8G  0 disk
 nvme1n1       259:4    0  15G  0 disk 
 └─nvme1n1p1   259:6    0  10G  0 part /data
 
-[ec2-user@ip-172-31-78-43 ~]$ sudo umount /data
+[ec2-user@ip-xxx-xx-xx-xxx ~]$ sudo umount /data
 
-[ec2-user@ip-172-31-78-43 ~]$ sudo fdisk /dev/sdc
+[ec2-user@ip-xxx-xx-xx-xxx ~]$ sudo fdisk /dev/sdc
 
 Welcome to fdisk (util-linux 2.37.4).
 Changes will remain in memory only, until you decide to write them.
@@ -140,7 +140,7 @@ The partition table has been altered.
 Calling ioctl() to re-read partition table.
 Syncing disks.
 
-[ec2-user@ip-172-31-78-43 ~]$ lsblk
+[ec2-user@ip-xxx-xx-xx-xxx ~]$ lsblk
 NAME          MAJ:MIN RM SIZE RO TYPE MOUNTPOINTS
 nvme0n1       259:0    0   8G  0 disk 
 ├─nvme0n1p1   259:1    0   8G  0 part /
@@ -149,14 +149,14 @@ nvme0n1       259:0    0   8G  0 disk
 nvme1n1       259:4    0  15G  0 disk 
 └─nvme1n1p1   259:7    0  15G  0 part 
 
-[ec2-user@ip-172-31-78-43 ~]$ xfs_growfs /data
+[ec2-user@ip-xxx-xx-xx-xxx ~]$ xfs_growfs /data
 xfs_growfs: /data is not a mounted XFS filesystem
-[ec2-user@ip-172-31-78-43 ~]$ sudo mount /dat
+[ec2-user@ip-xxx-xx-xx-xxx ~]$ sudo mount /dat
 
-[ec2-user@ip-172-31-78-43 ~]$ xfs_growfs /data
+[ec2-user@ip-xxx-xx-xx-xxx ~]$ xfs_growfs /data
 xfs_growfs: cannot open /dev/nvme1n1p1: Permission denied
 
-[ec2-user@ip-172-31-78-43 ~]$ sudo xfs_growfs /data
+[ec2-user@ip-xxx-xx-xx-xxx ~]$ sudo xfs_growfs /data
 meta-data=/dev/nvme1n1p1         isize=512    agcount=16, agsize=163824 blks
          =                       sectsz=4096  attr=2, projid32bit=1
          =                       crc=1        finobt=1, sparse=1, rmapbt=0
@@ -170,7 +170,7 @@ log      =internal log           bsize=4096   blocks=16384, version=2
 realtime =none                   extsz=4096   blocks=0, rtextents=0
 data blocks changed from 2621184 to 3931904
 
-[ec2-user@ip-172-31-78-43 ~]$ df -h /data
+[ec2-user@ip-xxx-xx-xx-xxx ~]$ df -h /data
 Filesystem      Size  Used Avail Use% Mounted on
 /dev/nvme1n1p1   15G  141M   15G   1% /data
 
