@@ -1,4 +1,4 @@
-# SOP: Fresh LVM Disk Provisioning
+# SOP: Extend LVM Disk
 
 ## Purpose
 Extend a disk using LVM.
